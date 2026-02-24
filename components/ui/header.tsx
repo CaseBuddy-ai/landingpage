@@ -28,19 +28,24 @@ export default function Header() {
           <nav className="hidden md:flex md:grow">
             <ul className="flex grow justify-end flex-wrap items-center gap-8">
               <li>
-                <a href="#screenshots" className="text-sm text-ink-muted hover:text-ink transition-colors">
+                <a href="/#screenshots" className="text-sm text-ink-muted hover:text-ink transition-colors">
                   App
                 </a>
               </li>
               <li>
-                <a href="#features" className="text-sm text-ink-muted hover:text-ink transition-colors">
+                <a href="/#features" className="text-sm text-ink-muted hover:text-ink transition-colors">
                   Features
                 </a>
               </li>
               <li>
-                <a href="#faq" className="text-sm text-ink-muted hover:text-ink transition-colors">
+                <a href="/#faq" className="text-sm text-ink-muted hover:text-ink transition-colors">
                   FAQ
                 </a>
+              </li>
+              <li>
+                <Link href="/quiz/frameworks" className="text-sm text-ink-muted hover:text-ink transition-colors">
+                  Quiz
+                </Link>
               </li>
               <li>
                 <a

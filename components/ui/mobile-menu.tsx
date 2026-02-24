@@ -64,7 +64,7 @@ export default function MobileMenu() {
         <ul className="bg-cream border border-sand-dark rounded-lg shadow-lg px-4 py-3 space-y-1">
           <li>
             <a
-              href="#screenshots"
+              href="/#screenshots"
               className="block py-2 px-3 text-sm text-ink-muted hover:text-ink rounded-md hover:bg-sand transition-colors"
               onClick={() => setMobileNavOpen(false)}
             >
@@ -73,7 +73,7 @@ export default function MobileMenu() {
           </li>
           <li>
             <a
-              href="#features"
+              href="/#features"
               className="block py-2 px-3 text-sm text-ink-muted hover:text-ink rounded-md hover:bg-sand transition-colors"
               onClick={() => setMobileNavOpen(false)}
             >
@@ -82,12 +82,21 @@ export default function MobileMenu() {
           </li>
           <li>
             <a
-              href="#faq"
+              href="/#faq"
               className="block py-2 px-3 text-sm text-ink-muted hover:text-ink rounded-md hover:bg-sand transition-colors"
               onClick={() => setMobileNavOpen(false)}
             >
               FAQ
             </a>
+          </li>
+          <li>
+            <Link
+              href="/quiz/frameworks"
+              className="block py-2 px-3 text-sm text-ink-muted hover:text-ink rounded-md hover:bg-sand transition-colors"
+              onClick={() => setMobileNavOpen(false)}
+            >
+              Quiz
+            </Link>
           </li>
           <li className="pt-2 border-t border-sand-dark">
             <a
