@@ -2,6 +2,7 @@
 
 import type React from 'react'
 import { useState, useEffect } from 'react'
+import posthog from 'posthog-js'
 import { Check, X } from 'lucide-react'
 import Link from 'next/link'
 
@@ -240,6 +241,7 @@ export default function FrameworksQuizPage() {
   const [isSubmitting, setIsSubmitting] = useState(false)
 
   const startQuiz = () => {
+    posthog.capture('quiz_started', { quiz: 'frameworks' })
     const shuffled = shuffleArray(QUESTION_BANK).slice(0, 10)
     const questionsWithShuffledAnswers = shuffled.map((q) => {
       const answers = [...q.answers]
@@ -263,9 +265,15 @@ export default function FrameworksQuizPage() {
 
   const handleAnswerClick = (answerIndex: number) => {
     if (showFeedback) return
+    const isCorrect = answerIndex === questions[currentQuestionIndex].correct
+    posthog.capture('quiz_answer_selected', {
+      quiz: 'frameworks',
+      question_number: currentQuestionIndex + 1,
+      is_correct: isCorrect,
+    })
     setSelectedAnswer(answerIndex)
     setShowFeedback(true)
-    if (answerIndex === questions[currentQuestionIndex].correct) {
+    if (isCorrect) {
       setScore((prev) => prev + 1)
     }
   }
@@ -278,6 +286,11 @@ export default function FrameworksQuizPage() {
           setSelectedAnswer(null)
           setShowFeedback(false)
         } else {
+          posthog.capture('quiz_completed', {
+            quiz: 'frameworks',
+            score,
+            total: questions.length,
+          })
           setState('results')
         }
       }, 1500)
@@ -303,6 +316,7 @@ export default function FrameworksQuizPage() {
           level: level.label,
         }),
       })
+      posthog.capture('quiz_email_submitted', { quiz: 'frameworks', score, level: level.label })
       setEmailSubmitted(true)
     } catch (error) {
       console.error('Error submitting email:', error)

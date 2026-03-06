@@ -3,6 +3,7 @@ import './css/style.css'
 import { Inter, DM_Serif_Display } from 'next/font/google'
 
 import Header from '@/components/ui/header'
+import PHProvider from './providers'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -31,10 +32,12 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className={`${inter.variable} ${dmSerif.variable} font-inter antialiased bg-cream text-ink tracking-tight`}>
-        <div className="flex flex-col min-h-screen overflow-hidden">
-          <Header />
-          {children}
-        </div>
+        <PHProvider>
+          <div className="flex flex-col min-h-screen overflow-hidden">
+            <Header />
+            {children}
+          </div>
+        </PHProvider>
       </body>
     </html>
   )

@@ -1,4 +1,5 @@
 import AnimateOnScroll from '@/components/ui/animate-on-scroll'
+import TrackableLink from '@/components/ui/trackable-link'
 
 const APP_STORE_URL = 'https://apps.apple.com/app/casebuddy-ai/id6746489925'
 
@@ -79,7 +80,9 @@ export default function Features() {
                   <div>
                     <h3 className="h3 mb-3">{feature.title}</h3>
                     <p className="text-lg text-ink-muted leading-relaxed mb-4">{feature.body}</p>
-                    <a
+                    <TrackableLink
+                      event="cta_clicked"
+                      properties={{ location: 'features', cta: feature.title }}
                       href={APP_STORE_URL}
                       target="_blank"
                       rel="noreferrer"
@@ -89,7 +92,7 @@ export default function Features() {
                       <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
                       </svg>
-                    </a>
+                    </TrackableLink>
                   </div>
                 </div>
               </AnimateOnScroll>
